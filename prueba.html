@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arduino Distance Monitor</title>
+</head>
+<body>
+  <h1>Arduino Distance Monitor</h1>
+  <p id="distance">Distance (cm):</p>
+  <button id="connectButton">Connect Arduino</button>
+
+  <script>
+    async function connectArduino() {
+      try {
+        const port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+
+        const reader = port.readable.getReader();
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          const decoder = new TextDecoder();
+          const receivedData = decoder.decode(value);
+          const distance = parseFloat(receivedData);
+
+          if (!isNaN(distance)) {
+            document.getElementById("distance").textContent = `Distance (cm): ${distance}`;
+          }
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    document.getElementById("connectButton").addEventListener("click", () => {
+      connectArduino();
+    });
+  </script>
+</body>
+</html>
