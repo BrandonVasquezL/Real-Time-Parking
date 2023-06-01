@@ -1,0 +1,38 @@
+#contenedores{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body{
+  background: url(fondo.JPG);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.lugar{
+  border: 1px solid;
+  border-radius: 4%;
+  padding: 0%;
+  padding-left:10%;
+  padding-right:9%;
+  padding-bottom: 30%;
+  position: relative;
+  margin-top: 7%;
+  margin-left: 6%;
+  margin-right: 2%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 170%;
+}
+
+h1{
+    text-align: center;
+    font-family: monospace;
+    font-size: 245%;
+}
+h2{
+  text-align: center;
+  margin-top: 11%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
