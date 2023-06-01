@@ -1,40 +1,32 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var conectarBtn = document.getElementById("conectarBtn");
-  conectarBtn.addEventListener("click", conectarArduino);
-  cambiarColor();
-});
+var client = new Paho.MQTT.Client("172.21.16.1", 9001, "Santiago");
 
-async function conectarArduino() {
-  try {
-    const port = await navigator.serial.requestPort();
-    await port.open({ baudRate: 115200 });
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
 
-    const reader = port.readable.getReader();
+client.connect({onSuccess:onConnect});
 
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-
-      const decoder = new TextDecoder();
-      const receivedData = decoder.decode(value);
-      const distancia = parseFloat(receivedData);
-
-      if (!isNaN(distancia)) {
-        actualizarDistancia(distancia);
-      }
-    }
-  } catch (error) {
-    console.error("Error:", error);
+function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+    console.log("onConnect");
+    client.subscribe("/distancia"); 
   }
-}
 
-function cambiarColor() {
-  console.log("funcionando");
+function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log("onConnectionLost:"+responseObject.errorMessage);
+    }
+}
+   // called when a message arrives
+function onMessageArrived(message) {
+
+  var msg = JSON.parse(message.payloadString); 
+  console.log("onMessageArrived:" + message.destinationName + message.payloadString);
+  var distanciaActual = msg.distancia;
+  console.log(distanciaActual);
 
   var lugares = document.querySelectorAll(".lugar");
 
   lugares.forEach(function(lugar) {
-    var distanciaActual = parseFloat(lugar.dataset.distancia);
 
     lugar.style.backgroundRepeat = "no-repeat";
     lugar.style.backgroundPosition = "center center";
@@ -51,12 +43,6 @@ function cambiarColor() {
     }
   });
 }
+//'{"lat": 19, "long": -91.34343, "mensaje": "hola"}'
 
-function actualizarDistancia(distancia) {
-  var lugares = document.querySelectorAll(".lugar");
-  lugares.forEach(function(lugar) {
-    lugar.dataset.distancia = distancia;
-  });
-
-  cambiarColor();
-}
+  
