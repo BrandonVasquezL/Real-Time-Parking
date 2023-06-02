@@ -10,7 +10,40 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.lugar{
+
+.lugarPrimero{
+  border: 1px solid;
+  border-radius: 4%;
+  padding: 0%;
+  padding-left:10%;
+  padding-right:9%;
+  padding-bottom: 30%;
+  position: relative;
+  margin-top: 7%;
+  margin-left: 6%;
+  margin-right: 2%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 170%;
+}
+
+.lugarSegundo{
+  border: 1px solid;
+  border-radius: 4%;
+  padding: 0%;
+  padding-left:10%;
+  padding-right:9%;
+  padding-bottom: 30%;
+  position: relative;
+  margin-top: 7%;
+  margin-left: 6%;
+  margin-right: 2%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 170%;
+}
+
+.lugarTercero{
   border: 1px solid;
   border-radius: 4%;
   padding: 0%;
