@@ -1,6 +1,6 @@
-/* var client = new Paho.MQTT.Client("82c5d775371f4fb89ca52b525b0a7e0a.s2.eu.hivemq.cloud", 8883, "Santiago");
+var client = new Paho.MQTT.Client("84d6d3a473904ee7bb63c3ce96c6b8a6.s2.eu.hivemq.cloud", 8884, "Santiago");
 
-client.username = "santiago";
+client.username = "Santiago";
 client.password = "Caracoles123";
 
 client.onConnectionLost = onConnectionLost;
@@ -88,9 +88,9 @@ function onMessageArrived(message) {
   }
 
 }
- */
+ 
 
-// Crear un cliente MQTT
+/* // Crear un cliente MQTT
 var mqtt = require('mqtt')
 
 var options = {
@@ -122,4 +122,4 @@ client.on('message', function (topic, message) {
 client.subscribe('my/test/topic');
 
 // publish message 'Hello' to topic 'my/test/topic'
-client.publish('my/test/topic', 'Hello');
+client.publish('my/test/topic', 'Hello'); */
