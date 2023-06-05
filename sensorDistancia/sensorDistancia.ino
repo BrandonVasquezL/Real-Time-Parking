@@ -14,7 +14,9 @@ float distanceCm;
 //Conexión a la red
 const char* ssid = "SANTY";
 const char* password = "caracoles123";
-const char* mqtt_server = "192.168.0.137";
+const char* mqtt_server = "c5dc569a2bf449f29b8d55936789731e.s2.eu.hivemq.cloud";
+const char* mqttUser = "santiago";
+const char* mqttPassword = "Caracoles123";
 
 //MQTT
 WiFiClient espClient;
@@ -75,7 +77,7 @@ void reconnect() {
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str())) {
+    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
       Serial.println("connected");
     } else {
       Serial.print("failed, rc=");

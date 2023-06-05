@@ -91,7 +91,7 @@ function onMessageArrived(message) {
  */
 
 // Crear un cliente MQTT
-var client = new Paho.MQTT.Client("82c5d775371f4fb89ca52b525b0a7e0a.s2.eu.hivemq.cloud", 8883, "santiago");
+var client = new Paho.MQTT.Client("20.79.70.109", 8883, "santiago");
 
 // Definir las credenciales de autenticación
 client.username = "santiago";
