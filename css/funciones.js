@@ -91,32 +91,35 @@ function onMessageArrived(message) {
  */
 
 // Crear un cliente MQTT
-var client = new Paho.MQTT.Client("20.79.70.109", 8883, "santiago");
+var mqtt = require('mqtt')
 
-// Definir las credenciales de autenticación
-client.username = "santiago";
-client.password = "Caracoles123";
-
-// Definir los callbacks
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// Conectar al broker MQTT de HiveMQ
-client.connect({ onSuccess: onConnect });
-
-// Callback de conexión exitosa
-function onConnect() {
-  console.log("Conectado al broker MQTT");
+var options = {
+    host: '84d6d3a473904ee7bb63c3ce96c6b8a6.s2.eu.hivemq.cloud',
+    port: 8884,
+    protocol: 'mqtts',
+    username: 'Santiago',
+    password: 'Caracoles123'
 }
 
-// Callback de pérdida de conexión
-function onConnectionLost(responseObject) {
-  if (responseObject.errorCode !== 0) {
-    console.log("Conexión perdida: " + responseObject.errorMessage);
-  }
-}
+// initialize the MQTT client
+var client = mqtt.connect(options);
 
-// Callback de llegada de mensaje
-function onMessageArrived(message) {
-  console.log("Mensaje recibido: " + message.payloadString);
-}
+// setup the callbacks
+client.on('connect', function () {
+    console.log('Connected');
+});
+
+client.on('error', function (error) {
+    console.log(error);
+});
+
+client.on('message', function (topic, message) {
+    // called each time a message is received
+    console.log('Received message:', topic, message.toString());
+});
+
+// subscribe to topic 'my/test/topic'
+client.subscribe('my/test/topic');
+
+// publish message 'Hello' to topic 'my/test/topic'
+client.publish('my/test/topic', 'Hello');
