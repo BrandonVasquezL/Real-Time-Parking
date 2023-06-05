@@ -1,4 +1,7 @@
-var client = new Paho.MQTT.Client("172.21.16.1", 9001, "Santiago");
+/* var client = new Paho.MQTT.Client("82c5d775371f4fb89ca52b525b0a7e0a.s2.eu.hivemq.cloud", 8883, "Santiago");
+
+client.username = "santiago";
+client.password = "Caracoles123";
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
@@ -85,5 +88,35 @@ function onMessageArrived(message) {
   }
 
 }
+ */
 
-  
+// Crear un cliente MQTT
+var client = new Paho.MQTT.Client("82c5d775371f4fb89ca52b525b0a7e0a.s2.eu.hivemq.cloud", 8883, "santiago");
+
+// Definir las credenciales de autenticación
+client.username = "santiago";
+client.password = "Caracoles123";
+
+// Definir los callbacks
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// Conectar al broker MQTT de HiveMQ
+client.connect({ onSuccess: onConnect });
+
+// Callback de conexión exitosa
+function onConnect() {
+  console.log("Conectado al broker MQTT");
+}
+
+// Callback de pérdida de conexión
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("Conexión perdida: " + responseObject.errorMessage);
+  }
+}
+
+// Callback de llegada de mensaje
+function onMessageArrived(message) {
+  console.log("Mensaje recibido: " + message.payloadString);
+}
