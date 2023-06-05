@@ -95,7 +95,7 @@ void setup() {
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
   setup_wifi();
-  client.setServer(mqtt_server, 1883);
+  client.setServer(mqtt_server, 8883);
   client.setCallback(callback);
 }
 
