@@ -75,7 +75,7 @@ void reconnect() {
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
+    if (client.connect(clientId.c_str())) {
       Serial.println("connected");
     } else {
       Serial.print("failed, rc=");
@@ -93,7 +93,7 @@ void setup() {
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
   setup_wifi();
-  client.setServer(mqtt_server, 9001);
+  client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 }
 
@@ -134,7 +134,7 @@ void loop() {
     // Prints the distance in the Serial Monitor
     Serial.print("Distance (cm): ");
     Serial.println(distanceCm);
-    client.publish("/distancia", mensaje);    
+    client.publish("/distancia3", mensaje);    
   
     delay(1000);
   }

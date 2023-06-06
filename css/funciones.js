@@ -85,7 +85,7 @@ function onMessageArrived(message) {
       }
     });
   }else if(message.destinationName === "/distancia3"){
-    var lugares = document.querySelectorAll(".lugarSegundo");
+    var lugares = document.querySelectorAll(".lugarTercero");
 
     lugares.forEach(function(lugar) {
   
