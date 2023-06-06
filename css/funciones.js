@@ -1,4 +1,4 @@
-var client = new Paho.MQTT.Client("ip172-18-0-10-chvav68gftqg00a3lm50-9001.direct.labs.play-with-docker.com", 9001, "Santiago");
+var client = new Paho.MQTT.Client("20.85.158.3", 9001, "Santiago");
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
