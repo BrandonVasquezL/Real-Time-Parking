@@ -1,7 +1,4 @@
-var client = new Paho.MQTT.Client("84d6d3a473904ee7bb63c3ce96c6b8a6.s2.eu.hivemq.cloud", 8884, "Santiago");
-
-client.username = "Santiago";
-client.password = "Caracoles123";
+var client = new Paho.MQTT.Client("172.", 1883, "Santiago");
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
@@ -88,38 +85,3 @@ function onMessageArrived(message) {
   }
 
 }
- 
-
-/* // Crear un cliente MQTT
-var mqtt = require('mqtt')
-
-var options = {
-    host: '84d6d3a473904ee7bb63c3ce96c6b8a6.s2.eu.hivemq.cloud',
-    port: 8884,
-    protocol: 'mqtts',
-    username: 'Santiago',
-    password: 'Caracoles123'
-}
-
-// initialize the MQTT client
-var client = mqtt.connect(options);
-
-// setup the callbacks
-client.on('connect', function () {
-    console.log('Connected');
-});
-
-client.on('error', function (error) {
-    console.log(error);
-});
-
-client.on('message', function (topic, message) {
-    // called each time a message is received
-    console.log('Received message:', topic, message.toString());
-});
-
-// subscribe to topic 'my/test/topic'
-client.subscribe('my/test/topic');
-
-// publish message 'Hello' to topic 'my/test/topic'
-client.publish('my/test/topic', 'Hello'); */

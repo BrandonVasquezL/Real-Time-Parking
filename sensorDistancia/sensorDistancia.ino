@@ -14,9 +14,7 @@ float distanceCm;
 //Conexión a la red
 const char* ssid = "SANTY";
 const char* password = "caracoles123";
-const char* mqtt_server = "c5dc569a2bf449f29b8d55936789731e.s2.eu.hivemq.cloud";
-const char* mqttUser = "santiago";
-const char* mqttPassword = "Caracoles123";
+const char* mqtt_server = "192.168.0.137";
 
 //MQTT
 WiFiClient espClient;
@@ -95,7 +93,7 @@ void setup() {
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
   setup_wifi();
-  client.setServer(mqtt_server, 8883);
+  client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 }
 
