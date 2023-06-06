@@ -1,4 +1,4 @@
-var client = new Paho.MQTT.Client("wss://20.85.158.3:9001/mqtt", 9001, "Santiago");
+var client = new Paho.MQTT.Client("20.85.158.3", 9001, "Santiago");
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
