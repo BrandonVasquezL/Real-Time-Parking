@@ -10,13 +10,12 @@ function generateRandomString(length) {
   return result;
 }
 
-// Uso de la función
-const randomString = generateRandomString(10); // Genera una cadena aleatoria de longitud 10
-console.log(randomString); // Imprime la cadena aleatoria en la consola
+const randomString = generateRandomString(10);
+console.log(randomString); 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const randomString = generateRandomString(10); // Genera una cadena aleatoria de longitud 10
-  console.log(randomString); // Imprime la cadena aleatoria en la consola
+  const randomString = generateRandomString(10);
+  console.log(randomString);
 });
 
 
