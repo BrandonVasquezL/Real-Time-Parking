@@ -10,7 +10,7 @@ services:
       - mynetwork
 
   webapp:
-    image: santiago840/app-parking:2.0
+    image: santiago840/app-parking:5.0
     ports:
       - 80:80
     networks:

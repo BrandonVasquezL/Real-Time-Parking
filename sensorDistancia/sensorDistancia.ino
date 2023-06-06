@@ -14,7 +14,7 @@ float distanceCm;
 //Conexión a la red
 const char* ssid = "SANTY";
 const char* password = "caracoles123";
-const char* mqtt_server = "20.85.158.3";
+const char* mqtt_server = "52.249.208.23";
 
 //MQTT
 WiFiClient espClient;
