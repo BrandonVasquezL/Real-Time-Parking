@@ -1,4 +1,4 @@
-var client = new Paho.MQTT.Client("172.", 1883, "Santiago");
+var client = new Paho.MQTT.Client("127.0.0.1", 1883, "Santiago");
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
