@@ -1,4 +1,26 @@
-var client = new Paho.MQTT.Client("20.85.158.3", 9001, "Santiago");
+function generateRandomString(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  
+  return result;
+}
+
+// Uso de la función
+const randomString = generateRandomString(10); // Genera una cadena aleatoria de longitud 10
+console.log(randomString); // Imprime la cadena aleatoria en la consola
+
+document.addEventListener('DOMContentLoaded', function() {
+  const randomString = generateRandomString(10); // Genera una cadena aleatoria de longitud 10
+  console.log(randomString); // Imprime la cadena aleatoria en la consola
+});
+
+
+var client = new Paho.MQTT.Client("20.85.158.3", 9001, randomString);
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
@@ -83,5 +105,5 @@ function onMessageArrived(message) {
       }
     });
   }
-
 }
+
