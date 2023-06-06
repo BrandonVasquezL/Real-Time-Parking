@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-var client = new Paho.MQTT.Client("20.85.158.3", 9001, randomString);
+var client = new Paho.MQTT.Client("52.249.208.23", 9001, randomString);
 
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;

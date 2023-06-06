@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   mqtt:
@@ -10,7 +10,7 @@ services:
       - mynetwork
 
   webapp:
-    image: santiago840/app-parking:1.0
+    image: santiago840/app-parking:2.0
     ports:
       - 80:80
     networks:
