@@ -163,7 +163,7 @@ function onMessageArrived(message) {
                     },
                     body: JSON.stringify({
                       lugar: "lugar2",
-                      tiempo: segundosPasados
+                      tiempo: segundosPasados2
                     })
                   })
                     .then(function(response) {
