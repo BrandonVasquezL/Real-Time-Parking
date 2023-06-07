@@ -170,7 +170,7 @@ function onMessageArrived(message) {
                       console.log("Datos enviados al backend:", response);
                       i2=0;
                       ban3=false
-                      segundosPasados = 0;
+                      segundosPasados2 = 0;
                     })
                     .catch(function(error) {
                       console.error("Error al enviar los datos al backend:", error);
