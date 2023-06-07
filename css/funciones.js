@@ -39,6 +39,8 @@ function onConnectionLost(responseObject) {
   }
 }
 var i = 0;
+var i2 = 0;
+var i3 = 0;
 var ban = false
 var ban2 = false
 var inicio
@@ -66,7 +68,7 @@ function onMessageArrived(message) {
            inicio = new Date();
           i++ 
         }
-       /* */
+
 
         lugarElement.classList.add("distancia-menor-h2");
         lugarElement.setAttribute("style", "background-color: red;");
@@ -116,31 +118,51 @@ function onMessageArrived(message) {
       lugarElement.style.backgroundPosition = "center center";
 
       if (distanciaActual <= 5) {
-        
 
-      /*  fetch("http://127.0.0.1:8000/parking/post/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",   
-          },
-          body: JSON.stringify({
-            lugar: "lugar2",
-            tiempo: tiempoOcupado
-          })
-        })
-          .then(function(response) {
-            console.log("Datos enviados al backend:", response);
-          })
-          .catch(function(error) {
-            console.error("Error al enviar los datos al backend:", error);
-          });*/
+        ban2=true
+        if(ban2==true){
+           inicio = new Date();
+          i2++ 
+        }
 
         lugarElement.classList.add("distancia-menor-h2");
         lugarElement.setAttribute("style", "background-color: red;");
         lugarElement.style.backgroundImage = "url('css/pngegg.png')";
         lugarElement.querySelector("h2").style.display = "none";
       } else {
+        ban2=false
         lugarElement.classList.remove("distancia-menor-h2");
+        if(i2>=1){
+          ban=true
+           fin = new Date();
+           tiempoPasado = fin - inicio;
+           segundosPasados = tiempoPasado / 1000;
+        }
+        console.log(segundosPasados)
+        if(ban == true){
+          fetch("https://apirest-production-3b72.up.railway.app/parking/post/", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",   
+                    },
+                    body: JSON.stringify({
+                      lugar: "lugar2",
+                      tiempo: segundosPasados
+                    })
+                  })
+                    .then(function(response) {
+                      console.log("Datos enviados al backend:", response);
+                      i2=0;
+                      ban=false
+                      segundosPasados = 0;
+                    })
+                    .catch(function(error) {
+                      console.error("Error al enviar los datos al backend:", error);
+                    });
+                  }
+        lugarElement.setAttribute("style", "background-color: green;");
+        lugarElement.querySelector("h2").style.display = "block";
+        lugarElement.querySelector("h4")
         lugarElement.setAttribute("style", "background-color: green;");
         lugarElement.querySelector("h2").style.display = "block";
       }
@@ -153,30 +175,51 @@ function onMessageArrived(message) {
       lugarElement.style.backgroundPosition = "center center";
 
       if (distanciaActual <= 5) {
-       
-       /* fetch("http://127.0.0.1:8000/parking/post/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",   
-          },
-          body: JSON.stringify({
-            lugar: "lugar3",
-            tiempo: tiempoOcupado
-          })
-        })
-          .then(function(response) {
-            console.log("Datos enviados al backend:", response);
-          })
-          .catch(function(error) {
-            console.error("Error al enviar los datos al backend:", error);
-          });*/
+
+        ban2=true
+        if(ban2==true){
+           inicio = new Date();
+          i3++ 
+        }
 
         lugarElement.classList.add("distancia-menor-h2");
         lugarElement.setAttribute("style", "background-color: red;");
         lugarElement.style.backgroundImage = "url('css/pngegg.png')";
         lugarElement.querySelector("h2").style.display = "none";
       } else {
+        ban2=false
         lugarElement.classList.remove("distancia-menor-h2");
+        if(i3>=1){
+          ban=true
+           fin = new Date();
+           tiempoPasado = fin - inicio;
+           segundosPasados = tiempoPasado / 1000;
+        }
+        console.log(segundosPasados)
+        if(ban == true){
+          fetch("https://apirest-production-3b72.up.railway.app/parking/post/", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",   
+                    },
+                    body: JSON.stringify({
+                      lugar: "lugar3",
+                      tiempo: segundosPasados
+                    })
+                  })
+                    .then(function(response) {
+                      console.log("Datos enviados al backend:", response);
+                      i3=0;
+                      ban=false
+                      segundosPasados = 0;
+                    })
+                    .catch(function(error) {
+                      console.error("Error al enviar los datos al backend:", error);
+                    });
+                  }
+        lugarElement.setAttribute("style", "background-color: green;");
+        lugarElement.querySelector("h2").style.display = "block";
+        lugarElement.querySelector("h4")
         lugarElement.setAttribute("style", "background-color: green;");
         lugarElement.querySelector("h2").style.display = "block";
       }
